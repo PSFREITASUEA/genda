@@ -1,7 +1,7 @@
 package com.genda
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.genda.databinding.ActivityLoginBinding
 
@@ -18,7 +18,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.buttonLoginUser.setOnClickListener {
-            Toast.makeText(baseContext, "Login", Toast.LENGTH_SHORT).show()
+            val intent = Intent(
+                this,
+                HomeActivity::class.java
+            )
+            startActivity(intent)
         }
     }
 }
