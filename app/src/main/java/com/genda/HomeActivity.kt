@@ -27,7 +27,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setToolbar() {
         setSupportActionBar(binding.toolbarHome)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     private fun setupNavigationDrawer() {

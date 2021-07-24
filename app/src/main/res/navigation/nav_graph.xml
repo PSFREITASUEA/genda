@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragment_home"
         android:name="com.genda.HomeFragment"
-        android:label="fragment_home"
+        android:label=""
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_fragment_home_to_fragment_create_event"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/fragment_create_event"
         android:name="com.genda.CreateEventFragment"
-        android:label="create_event"
+        android:label="Criar Evento"
         tools:layout="@layout/fragment_create_event" />
 
 
