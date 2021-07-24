@@ -1,4 +1,4 @@
-package com.genda
+package com.genda.ui
 
 import android.content.Intent
 import android.os.Bundle

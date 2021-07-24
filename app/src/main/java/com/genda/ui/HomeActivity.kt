@@ -1,4 +1,4 @@
-package com.genda
+package com.genda.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.genda.R
 import com.genda.databinding.ActivityHomeBinding
 import com.google.android.material.navigation.NavigationView
 

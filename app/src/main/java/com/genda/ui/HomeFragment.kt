@@ -1,4 +1,4 @@
-package com.genda
+package com.genda.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

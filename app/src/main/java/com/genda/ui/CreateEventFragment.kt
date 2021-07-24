@@ -1,18 +1,22 @@
-package com.genda
+package com.genda.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.genda.databinding.FragmentProfileBinding
+import com.genda.databinding.FragmentCreateEventBinding
 
-class ProfileFragment : Fragment() {
+class CreateEventFragment : Fragment() {
+
+    private lateinit var binding: FragmentCreateEventBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentProfileBinding.inflate(inflater, container, false).root
+        binding = FragmentCreateEventBinding.inflate(inflater, container, false)
+        return binding.root
     }
 }
