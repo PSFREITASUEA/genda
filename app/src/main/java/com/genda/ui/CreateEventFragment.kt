@@ -113,7 +113,6 @@ class CreateEventFragment : Fragment() {
             datePickerDialog.show()
         }
 
-
         binding.textViewEventFinalTime.setOnClickListener {
             val timePickerDialog = TimePickerDialog(
                 requireContext(),
@@ -132,6 +131,13 @@ class CreateEventFragment : Fragment() {
             )
             timePickerDialog.show()
 
+        }
+
+        binding.materialButtonCreateEvent.setOnClickListener {
+            viewModel.saveEvent(
+                eventTitle = binding.textInputEditTextEventTitle.text.toString(),
+                eventDescription = binding.textInputEditTextEventDescription.text.toString()
+            )
         }
     }
 }
