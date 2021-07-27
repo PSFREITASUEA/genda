@@ -7,26 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.genda.databinding.FragmentCreateEventBinding
-import java.text.SimpleDateFormat
+import com.genda.ui.createevent.CreateEventViewModel
 import java.util.*
 
 class CreateEventFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateEventBinding
+    private val viewModel: CreateEventViewModel by viewModels()
 
-    val initialCalendar = Calendar.getInstance()
-    val initialDay = initialCalendar.get(Calendar.DAY_OF_MONTH)
-    val initialMonth = initialCalendar.get(Calendar.MONTH)
-    val initialYear = initialCalendar.get(Calendar.YEAR)
-
-
-    val finalCalendar = Calendar.getInstance()
-    val finalDay = finalCalendar.get(Calendar.DAY_OF_MONTH)
-    val finalMonth = finalCalendar.get(Calendar.MONTH)
-    val finalYear = finalCalendar.get(Calendar.YEAR)
-
-    var time: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +26,22 @@ class CreateEventFragment : Fragment() {
         binding = FragmentCreateEventBinding.inflate(inflater, container, false)
 
         setupClickListeners()
+        setupViews()
 
 
         return binding.root
+    }
+
+    private fun setupViews() {
+        binding.textViewEventInitialDate.text =
+            viewModel.getFormattedEventDate(viewModel.getInitialEventTime())
+        binding.textViewEventInitialTime.text =
+            viewModel.getFormattedEventTime(viewModel.getInitialEventTime())
+
+        binding.textViewEventFinalDate.text =
+            viewModel.getFormattedEventDate(viewModel.getFinalEventTime())
+        binding.textViewEventInitialTime.text =
+            viewModel.getFormattedEventTime(viewModel.getFinalEventTime())
     }
 
     private fun setupClickListeners() {
@@ -48,38 +51,39 @@ class CreateEventFragment : Fragment() {
                 requireContext(),
                 { view, year, monthOfYear, dayOfMonth ->
 
-                    time += "$dayOfMonth/$monthOfYear/$year"
 
-                    initialCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                    initialCalendar.set(Calendar.MONTH, monthOfYear)
-                    initialCalendar.set(Calendar.YEAR, year)
+                    viewModel.setInitialEventDate(
+                        dayOfMonth = dayOfMonth,
+                        monthOfYear = monthOfYear,
+                        year = year
+                    )
 
                     binding.textViewEventInitialDate.text =
-                        SimpleDateFormat("E, dd MMM yyyy").format(initialCalendar.time).toString()
+                        viewModel.getFormattedEventDate(viewModel.getInitialEventTime())
                 },
-                initialYear,
-                initialMonth,
-                initialDay,
+                viewModel.initialEventCalendar.get(Calendar.YEAR),
+                viewModel.initialEventCalendar.get(Calendar.MONTH),
+                viewModel.initialEventCalendar.get(Calendar.DAY_OF_MONTH)
             )
             datePickerDialog.show()
         }
 
         binding.textViewEventInitialTime.setOnClickListener {
 
-            val hour = initialCalendar.get(Calendar.HOUR)
-            val minute = initialCalendar.get(Calendar.MINUTE)
-
-
             val timePickerDialog = TimePickerDialog(
                 requireContext(),
                 { view, hour, minute ->
-                    time += " - $hour:$minute"
-                    binding.textViewEventInitialTime.text = "$hour:$minute"
-                    initialCalendar.set(Calendar.HOUR, hour)
-                    initialCalendar.set(Calendar.MINUTE, minute)
+                    viewModel.setInitialEventTime(
+                        hour = hour,
+                        minute = minute
+                    )
+                    binding.textViewEventInitialTime.text =
+                        viewModel.getFormattedEventTime(viewModel.getInitialEventTime())
+
+
                 },
-                hour,
-                minute,
+                viewModel.initialEventCalendar.get(Calendar.HOUR),
+                viewModel.initialEventCalendar.get(Calendar.MINUTE),
                 true
 
             )
@@ -93,39 +97,36 @@ class CreateEventFragment : Fragment() {
                 requireContext(),
                 { view, year, monthOfYear, dayOfMonth ->
 
-                    time += "$dayOfMonth/$monthOfYear/$year"
-
-                    finalCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                    finalCalendar.set(Calendar.MONTH, monthOfYear)
-                    finalCalendar.set(Calendar.YEAR, year)
-
+                    viewModel.setFinalEventDate(
+                        dayOfMonth = dayOfMonth,
+                        monthOfYear = monthOfYear,
+                        year = year
+                    )
 
                     binding.textViewEventFinalDate.text =
-                        SimpleDateFormat("E, dd MMM yyyy").format(finalCalendar.time).toString()
+                        viewModel.getFormattedEventDate(viewModel.getFinalEventTime())
                 },
-                finalYear,
-                finalMonth,
-                finalDay,
+                viewModel.finalEventCalendar.get(Calendar.YEAR),
+                viewModel.finalEventCalendar.get(Calendar.MONTH),
+                viewModel.finalEventCalendar.get(Calendar.DAY_OF_MONTH),
             )
             datePickerDialog.show()
         }
 
 
         binding.textViewEventFinalTime.setOnClickListener {
-
-            val hour = finalCalendar.get(Calendar.HOUR)
-            val minute = finalCalendar.get(Calendar.MINUTE)
-
-
             val timePickerDialog = TimePickerDialog(
                 requireContext(),
                 { view, hour, minute ->
-                    binding.textViewEventInitialTime.text = "$hour:$minute"
-                    finalCalendar.set(Calendar.HOUR, hour)
-                    finalCalendar.set(Calendar.MINUTE, minute)
+                    viewModel.setFinalEventTime(
+                        hour = hour,
+                        minute = minute
+                    )
+                    binding.textViewEventFinalTime.text =
+                        viewModel.getFormattedEventTime(viewModel.getFinalEventTime())
                 },
-                hour,
-                minute,
+                viewModel.finalEventCalendar.get(Calendar.HOUR),
+                viewModel.finalEventCalendar.get(Calendar.MINUTE),
                 true
 
             )
