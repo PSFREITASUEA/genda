@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -31,83 +32,73 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout_event_date"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+    <TextView
+        android:id="@+id/textView_event_initial_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Data do Evento"
-        android:textColorHint="@color/black"
-        app:boxBackgroundColor="@color/grey_f4"
-        app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayout_event_title"
+        android:background="@color/grey_f4"
+        android:lines="1"
+        android:padding="14sp"
+        android:text="Seg, 26 de Julho de 2021"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/textView_event_initial_time"
         app:layout_constraintStart_toStartOf="@id/textInputLayout_event_title"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout_event_title">
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout_event_title" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText_event_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lines="1"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textView_event_initial_time"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@color/grey_f4"
+        android:lines="1"
+        android:padding="14sp"
+        android:text="19:00"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/textView_event_initial_date"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayout_event_title"
+        app:layout_constraintStart_toEndOf="@id/textView_event_initial_date"
+        app:layout_constraintTop_toTopOf="@id/textView_event_initial_date"
+        tools:text="19:00" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout_event_participants"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+    <TextView
+        android:id="@+id/textView_event_final_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Participantes do Evento"
-        android:textColorHint="@color/black"
-        app:boxBackgroundColor="@color/grey_f4"
-        app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayout_event_date"
-        app:layout_constraintStart_toStartOf="@id/textInputLayout_event_date"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout_event_date">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText_event_participants"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lines="1"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:background="@color/grey_f4"
+        android:lines="1"
+        android:padding="14sp"
+        android:text="Seg, 26 de Julho de 2021"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/textView_event_final_time"
+        app:layout_constraintStart_toStartOf="@id/textView_event_initial_date"
+        app:layout_constraintTop_toBottomOf="@id/textView_event_initial_date" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout_event_description"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="108dp"
-        android:gravity="start"
-        android:hint="Descrição do evento"
-        android:textColorHint="@color/black"
-        app:boxBackgroundColor="@color/grey_f4"
-        app:hintTextColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/materialButton_create_event"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayout_event_participants"
-        app:layout_constraintStart_toStartOf="@id/textInputLayout_event_participants"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout_event_participants">
+    <TextView
+        android:id="@+id/textView_event_final_time"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@color/grey_f4"
+        android:lines="1"
+        android:padding="14sp"
+        android:text="20:00"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/textView_event_final_date"
+        app:layout_constraintEnd_toEndOf="@id/textView_event_initial_time"
+        app:layout_constraintStart_toEndOf="@id/textView_event_final_date"
+        app:layout_constraintTop_toTopOf="@id/textView_event_final_date"
+        tools:text="20:00" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText_event_description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/materialButton_create_event"
@@ -116,16 +107,15 @@
         android:layout_height="wrap_content"
         android:layout_margin="38dp"
         android:backgroundTint="@color/grey_b3"
+        android:letterSpacing="0"
         android:padding="18dp"
         android:text="Criar evento"
-        android:letterSpacing="0"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputLayout_event_description"
         app:layout_constraintVertical_bias="1" />
 
 
